@@ -6,7 +6,7 @@
 /*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/12 19:23:02 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/12 19:36:03 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_free(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->exit_img);
 		mlx_destroy_image(vars->mlx, vars->player_img);
 		mlx_destroy_image(vars->mlx, vars->wall_img);
+        mlx_destroy_image(vars->mlx, vars->enemy_img);
 		mlx_destroy_window(vars->mlx, vars->win);
 		mlx_destroy_display(vars->mlx);
 		free(vars->mlx);
@@ -279,6 +280,14 @@ int	key_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
+int	close_window(t_vars *vars)
+{
+    ft_free(vars);
+    write(1, "Complete game -_-\n", 19);
+    exit(0);
+    return (0);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_vars	vars;
@@ -310,6 +319,7 @@ int	main(int argc, char *argv[])
 		return (ft_free(&vars), perror("Failed to load images"), 1);
 	render_map(&vars);
 	mlx_key_hook(vars.win, key_hook, &vars);
+    mlx_hook(vars.win, 17, 0, close_window, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }
