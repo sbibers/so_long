@@ -6,7 +6,7 @@
 /*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/12 19:36:03 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/12 19:37:34 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -315,7 +315,7 @@ int	main(int argc, char *argv[])
 	vars.enemy_img = mlx_xpm_file_to_image(vars.mlx, "enemy.xpm",
 			&vars.img_height, &vars.img_width);
 	if (!vars.player_img || !vars.wall_img || !vars.collectible_img
-		|| !vars.empty_space_img)
+		|| !vars.empty_space_img || !vars.enemy_img)
 		return (ft_free(&vars), perror("Failed to load images"), 1);
 	render_map(&vars);
 	mlx_key_hook(vars.win, key_hook, &vars);
