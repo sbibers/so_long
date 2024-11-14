@@ -6,7 +6,7 @@
 /*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/13 15:02:02 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/14 17:55:39 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_var
 	void	*ex;
 	void	*en;
 	char	**map;
+	char	**copy_map;
 	int		i_wid;
 	int		i_hei;
 	int		w_width;

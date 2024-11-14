@@ -6,7 +6,7 @@
 /*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:45:30 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/13 14:35:19 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/14 17:57:08 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strcpy(char *dest, char *src)
 		dest[len] = src[len];
 		len++;
 	}
-	free(src);
+	// free(src);
 	dest[len] = '\0';
 	return (dest);
 }

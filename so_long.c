@@ -6,7 +6,7 @@
 /*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/13 14:35:27 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/14 19:21:36 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	read_map(char *argv, t_vars *vars)
 		exit(1);
 	count = -1;
 	vars->map = (char **)malloc(MAX_LINES * sizeof(char *) + 1);
-	if (vars->map == NULL)
+	vars->copy_map = (char **)malloc(MAX_LINES * sizeof(char *) + 1);
+	if (vars->map == NULL || vars->copy_map == NULL)
 		exit(1);
 	while (++count < MAX_LINES)
 	{
@@ -31,13 +32,16 @@ void	read_map(char *argv, t_vars *vars)
 		if (str == NULL)
 			break ;
 		vars->map[count] = ft_strcpy(vars->map[count], str);
-		if (!vars->map[count])
+		vars->copy_map[count] = ft_strcpy(vars->copy_map[count], str);
+		if (!vars->map[count] || !vars->copy_map[count])
 		{
 			free(str);
 			break ;
 		}
+		free(str);
 	}
 	vars->map[count] = NULL;
+	vars->copy_map[count] = NULL;
 	close(fd);
 }
 
@@ -94,6 +98,55 @@ void	xpm_to_file(t_vars *vars)
 			&vars->i_wid);
 }
 
+int is_valid_move(char **map, int x, int y, int max_x, int max_y)
+{
+	return (x >= 0 && y >= 0 && x < max_x && y < max_y && map[y][x] != 'A' && map[y][x] != '1');
+}
+
+int dfs(t_vars *vars, int x, int y, int *collect)
+{
+	if (vars->copy_map[y][x] == 'E' || *collect == 0)
+		return (1);
+	if (vars->copy_map[y][x] == '1' || vars->copy_map[y][x] == 'A' || vars->copy_map[y][x] == 'E')
+        return (0);
+	if (vars->copy_map[y][x] == 'C')
+	{
+		*collect -= 1;
+		vars->copy_map[y][x] = '0';
+	}
+	else
+		vars->copy_map[y][x] = '1';
+ 	if (is_valid_move(vars->copy_map, x + 1, y, vars->w_width, vars->w_height) && dfs(vars, x + 1, y, collect)) return (1);
+    if (is_valid_move(vars->copy_map, x - 1, y, vars->w_width, vars->w_height) && dfs(vars, x - 1, y, collect)) return (1);
+    if (is_valid_move(vars->copy_map, x, y + 1, vars->w_width, vars->w_height) && dfs(vars, x, y + 1, collect)) return (1);
+    if (is_valid_move(vars->copy_map, x, y - 1, vars->w_width, vars->w_height) && dfs(vars, x, y - 1, collect)) return (1);
+	return (0);
+}
+
+int check_map(t_vars *vars)
+{
+	int	collect;
+
+	collect = 0;
+	int i = 0;
+	int j = 0;
+	while (vars->copy_map[i][j])
+	{
+		j = 0;
+		while (vars->copy_map[i][j])
+		{
+			if (vars->copy_map[i][j] == 'C')
+				collect++;
+			j++;
+		}
+		i++;
+	}
+	int flag = dfs(vars, vars->player_x, vars->player_y, &collect);
+	if (collect > 0 && flag == 0)
+		return (0);
+	return (flag);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_vars	vars;
@@ -111,6 +164,12 @@ int	main(int argc, char *argv[])
 	xpm_to_file(&vars);
 	if (!vars.p || !vars.wall || !vars.c || !vars.em || !vars.en || !vars.ex)
 		return (ft_free(&vars), perror("Failed to load images"), 1);
+	if (check_map(&vars) == 0)
+	{
+		ft_free(&vars);
+		ft_free_string(vars.copy_map);
+		return (1);
+	}
 	render_map(&vars);
 	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_hook(vars.win, 17, 0, close_window, &vars);
