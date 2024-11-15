@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 X11_FLAGS = -lmlx -lXext -lX11
 
-SRCS = so_long.c putnbr.c check.c put_map.c free.c key.c get_next_line.c get_next_line_utils.c
+SRCS = so_long.c putnbr.c check.c put_map.c free.c key.c check_map.c get_next_line.c get_next_line_utils.c
 
 OBJS=$(SRCS:%.c=%.o)
 

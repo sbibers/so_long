@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:45:30 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/14 17:57:08 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/15 15:13:11 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ char	*ft_strcpy(char *dest, char *src)
 		dest[len] = src[len];
 		len++;
 	}
-	// free(src);
 	dest[len] = '\0';
 	return (dest);
 }
@@ -47,10 +46,7 @@ void	check(t_vars *vars)
 		while (vars->map[i][j] != '\0' && vars->map[i][j] != '\n')
 			j++;
 		if (j != size)
-		{
-			ft_free_string(vars->map);
-			exit(1);
-		}
+			error_handle(vars);
 		i++;
 	}
 }
@@ -71,7 +67,7 @@ void	check_sympol(t_vars *vars)
 		while (vars->map[i][++j])
 		{
 			if (check_char(vars->map[i][j]) == 1)
-				return (ft_free_string(vars->map), exit(1));
+				error_handle(vars);
 			if (vars->map[i][j] == 'E')
 				count_exit++;
 			if (vars->map[i][j] == 'P')
@@ -79,7 +75,7 @@ void	check_sympol(t_vars *vars)
 		}
 	}
 	if (count_exit != 1 || count_player != 1)
-		return (ft_free_string(vars->map), exit(1));
+		error_handle(vars);
 }
 
 void	check_wall(t_vars *vars)
@@ -92,13 +88,13 @@ void	check_wall(t_vars *vars)
 	while (vars->map[height])
 	{
 		if (vars->map[height][0] == '\n')
-			return (ft_free_string(vars->map), exit(1));
+			error_handle(vars);
 		height++;
 	}
 	while (vars->map[0][i] && vars->map[0][i] != '\n')
 	{
 		if (vars->map[0][i] != '1' || vars->map[height - 1][i] != '1')
-			return (ft_free_string(vars->map), exit(1));
+			error_handle(vars);
 		i++;
 	}
 	i = 0;
@@ -106,15 +102,14 @@ void	check_wall(t_vars *vars)
 	{
 		if (vars->map[i][0] != '1' || vars->map[i][ft_strlen(vars->map[0])
 			- 2] != '1')
-			return (ft_free_string(vars->map), exit(1));
+			error_handle(vars);
 		i++;
 	}
 }
 
 int	check_char(char c)
 {
-	if (c != '1' && c != '0' && c != 'C' && c != 'P' && c != 'E' && c != '\n'
-		&& c != 'A')
+	if (c != '1' && c != '0' && c != 'C' && c != 'P' && c != 'E' && c != '\n')
 	{
 		return (1);
 	}

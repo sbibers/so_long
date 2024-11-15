@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:52:46 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/13 15:08:36 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/15 15:14:32 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ int	key_hook(int keycode, t_vars *vars)
 	else if (keycode == XK_d)
 		new_x += 1;
 	else if (keycode == XK_Escape)
-		return (ft_free(vars), exit(0), 0);
+	{
+		ft_free(vars);
+		ft_free_string(vars->copy_map);
+		exit(0);
+	}
 	if (vars->map[new_y][new_x] != '1')
 		clear_draw(vars, new_x, new_y);
 	return (0);
@@ -58,8 +62,7 @@ int	clear_draw(t_vars *vars, int new_x, int new_y)
 {
 	static int	i;
 
-	if (vars->map[new_y][new_x] == 'C' || vars->map[new_y][new_x] == 'A'
-		|| vars->map[new_y][new_x] == '0')
+	if (vars->map[new_y][new_x] == 'C' || vars->map[new_y][new_x] == '0')
 	{
 		write(1, "move: ", 6);
 		putnbr(++i);
@@ -68,9 +71,7 @@ int	clear_draw(t_vars *vars, int new_x, int new_y)
 	if (vars->map[new_y][new_x] == 'C')
 		vars->map[new_y][new_x] = '0';
 	else if (vars->map[new_y][new_x] == 'E' && check_exit(vars->map) == 1)
-		return (ft_free(vars), exit(0), 0);
-	else if (vars->map[new_y][new_x] == 'A')
-		return (ft_free(vars), exit(0), 0);
+		close_window(vars);
 	if (vars->map[new_y][new_x] != 'E')
 	{
 		vars->map[vars->player_y][vars->player_x] = '0';

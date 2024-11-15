@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:47:47 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/13 15:12:33 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/15 15:13:27 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ void	put_map(t_vars *vars, int i, int j)
 			i * vars->i_hei);
 	else if (vars->map[i][j] == '0')
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->em, j * vars->i_wid,
-			i * vars->i_hei);
-	else if (vars->map[i][j] == 'A')
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->en, j * vars->i_wid,
 			i * vars->i_hei);
 	else if (vars->map[i][j] == 'E')
 	{

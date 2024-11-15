@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:49:38 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/13 14:35:20 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/15 15:13:52 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	ft_free(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->ex);
 		mlx_destroy_image(vars->mlx, vars->p);
 		mlx_destroy_image(vars->mlx, vars->wall);
-		mlx_destroy_image(vars->mlx, vars->en);
 		mlx_destroy_window(vars->mlx, vars->win);
 		mlx_destroy_display(vars->mlx);
 		free(vars->mlx);
@@ -47,6 +46,15 @@ void	ft_free(t_vars *vars)
 int	close_window(t_vars *vars)
 {
 	ft_free(vars);
+	ft_free_string(vars->copy_map);
 	exit(0);
 	return (0);
+}
+
+void	error_handle(t_vars *vars)
+{
+	write(2, "Error\nwrong map\n", 16);
+	ft_free_string(vars->map);
+	ft_free_string(vars->copy_map);
+	exit(1);
 }

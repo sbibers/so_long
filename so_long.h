@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/14 17:55:39 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/15 15:15:05 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 #  define BUFFER_SIZE 1024
 # endif
 
+# include "mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
-# include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -38,7 +38,6 @@ typedef struct s_var
 	void	*c;
 	void	*em;
 	void	*ex;
-	void	*en;
 	char	**map;
 	char	**copy_map;
 	int		i_wid;
@@ -47,6 +46,7 @@ typedef struct s_var
 	int		w_height;
 	int		player_x;
 	int		player_y;
+	int		fd;
 }			t_vars;
 
 size_t		ft_strlen(char *str);
@@ -70,6 +70,10 @@ int			key_hook(int keycode, t_vars *vars);
 int			close_window(t_vars *vars);
 void		xpm_to_file(t_vars *vars);
 void		check_wall(t_vars *vars);
-void		read_map(char *argv, t_vars *vars);
+void		read_map(t_vars *vars);
+void		error_handle(t_vars *vars);
+int			check_map(t_vars *vars);
+int			dfs(t_vars *vars, int x, int y, int *collect);
+int			is_valid_move(char **map, int x, int y);
 
 #endif
