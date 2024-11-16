@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/16 12:30:01 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 14:32:47 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	main(int argc, char *argv[])
 {
 	t_vars	vars;
 
-	init(&vars);
+	vars.count_collect = 0;
 	vars.fd = open(argv[1], O_RDONLY);
 	if (argc != 2 || argv[1][0] == '\0' || vars.fd == -1)
 	{
@@ -91,9 +91,9 @@ int	main(int argc, char *argv[])
 	check_wall(&vars);
 	calculate(&vars);
 	get_position(&vars);
+	check_map(&vars);
 	vars.mlx = mlx_init();
 	xpm_to_file(&vars);
-	check_map(&vars);
 	vars.win = mlx_new_window(vars.mlx, vars.w_width, vars.w_height, "so_long");
 	render_map(&vars);
 	mlx_key_hook(vars.win, key_hook, &vars);

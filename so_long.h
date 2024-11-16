@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/16 12:24:26 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 14:26:53 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_var
 	int		count_collect;
 }			t_vars;
 
-void		init(t_vars *vars);
 size_t		ft_strlen(char *str);
 char		*ft_strchr(char *str, int c);
 char		*ft_strjoin(char *s1, char *s2);

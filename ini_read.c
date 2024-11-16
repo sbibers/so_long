@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:19:10 by salam             #+#    #+#             */
-/*   Updated: 2024/11/16 12:31:18 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 14:26:39 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,28 +47,4 @@ void	read_map(t_vars *vars)
 	vars->copy_map[count] = NULL;
 	vars->copy_map_2[count] = NULL;
 	close(vars->fd);
-}
-
-void	init(t_vars *vars)
-{
-	vars->mlx = NULL;
-	vars->win = NULL;
-	vars->img = NULL;
-	vars->p = NULL;
-	vars->wall = NULL;
-	vars->c = NULL;
-	vars->em = NULL;
-	vars->ex = NULL;
-	vars->en = NULL;
-	vars->map = NULL;
-	vars->copy_map = NULL;
-	vars->copy_map_2 = NULL;
-	vars->i_wid = 0;
-	vars->i_hei = 0;
-	vars->w_width = 0;
-	vars->w_height = 0;
-	vars->player_x = 0;
-	vars->player_y = 0;
-	vars->fd = 0;
-	vars->count_collect = 0;
 }
