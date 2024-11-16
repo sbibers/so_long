@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/16 17:33:40 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 20:02:00 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ int	main(int argc, char *argv[])
 		check_map(&vars);
 		vars.mlx = mlx_init();
 		xpm_to_file(&vars);
-		vars.win = mlx_new_window(vars.mlx, vars.w_width, vars.w_height, "so_long");
+		vars.win = mlx_new_window(vars.mlx, vars.w_width,
+				vars.w_height, "so_long");
 		render_map(&vars);
 		mlx_key_hook(vars.win, key_hook, &vars);
 		mlx_hook(vars.win, 17, 0, close_window, &vars);

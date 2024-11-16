@@ -15,6 +15,7 @@
 void	flood_fill(t_vars *vars, int x, int y)
 {
 	if (x < 0 || y < 0 || vars->copy_map[y][x] == '1'
+		|| vars->copy_map[y][x] == '\0' || vars->copy_map[y][x] == '\n'
 		|| vars->copy_map[y][x] == 'V' || vars->copy_map[y][x] == 'A')
 		return ;
 	if (vars->copy_map[y][x] == 'C')
@@ -31,6 +32,7 @@ void	flood_fill(t_vars *vars, int x, int y)
 int	flood_fill_exit(t_vars *vars, int x, int y)
 {
 	if (x < 0 || y < 0 || vars->copy_map_2[y][x] == '1'
+		|| vars->copy_map_2[y][x] == '\0' || vars->copy_map_2[y][x] == '\n'
 		|| vars->copy_map_2[y][x] == 'V' || vars->copy_map_2[y][x] == 'A')
 		return (0);
 	if (vars->copy_map_2[y][x] == 'E')
@@ -64,7 +66,8 @@ int	check_map(t_vars *vars)
 		}
 	}
 	flood_fill(vars, vars->player_x, vars->player_y);
-	if (flood_fill_exit(vars, vars->player_x, vars->player_y) == 1 && vars->count_collect == 0)
+	if (flood_fill_exit(vars, vars->player_x, vars->player_y) == 1
+		&& vars->count_collect == 0)
 		return (1);
 	else
 	{
