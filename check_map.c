@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 09:56:56 by salam             #+#    #+#             */
-/*   Updated: 2024/11/16 14:33:09 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 15:30:36 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	check_map(t_vars *vars)
 	int	i;
 	int	j;
 
+	vars->count_collect = 0;
 	i = -1;
 	while (vars->copy_map_2[++i])
 	{

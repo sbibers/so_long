@@ -6,14 +6,20 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:19:10 by salam             #+#    #+#             */
-/*   Updated: 2024/11/16 14:26:39 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 15:28:43 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	malloc_maps(t_vars *vars)
+static void	malloc_maps(t_vars *vars, char *file_map)
 {
+	vars->fd = open(file_map, O_RDONLY);
+	if (vars->fd == -1)
+	{
+		write(2, "Error\nthis argument not a map\n", 30);
+		exit(1);
+	}
 	vars->map = (char **)malloc(MAX_LINES * sizeof(char *) + 1);
 	vars->copy_map = (char **)malloc(MAX_LINES * sizeof(char *) + 1);
 	vars->copy_map_2 = (char **)malloc(MAX_LINES * sizeof(char *) + 1);
@@ -21,13 +27,13 @@ static void	malloc_maps(t_vars *vars)
 		exit(1);
 }
 
-void	read_map(t_vars *vars)
+void	read_map(t_vars *vars, char *file_map)
 {
 	char	*str;
 	int		count;
 
 	count = -1;
-	malloc_maps(vars);
+	malloc_maps(vars, file_map);
 	while (++count < MAX_LINES)
 	{
 		str = get_next_line(vars->fd);

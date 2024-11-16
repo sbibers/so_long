@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/16 14:32:47 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 15:29:34 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,26 +78,26 @@ int	main(int argc, char *argv[])
 {
 	t_vars	vars;
 
-	vars.count_collect = 0;
-	vars.fd = open(argv[1], O_RDONLY);
-	if (argc != 2 || argv[1][0] == '\0' || vars.fd == -1)
+	if (argc == 2)
 	{
-		write(2, "Error\n./so_long map.ber\n", 24);
-		return (1);
+		vars.count_collect = 0;
+		read_map(&vars, argv[1]);
+		check(&vars);
+		check_sympol(&vars);
+		check_wall(&vars);
+		calculate(&vars);
+		get_position(&vars);
+		check_map(&vars);
+		vars.mlx = mlx_init();
+		xpm_to_file(&vars);
+		vars.win = mlx_new_window(vars.mlx, vars.w_width, vars.w_height,
+				"so_long");
+		render_map(&vars);
+		mlx_key_hook(vars.win, key_hook, &vars);
+		mlx_hook(vars.win, 17, 0, close_window, &vars);
+		mlx_loop(vars.mlx);
 	}
-	read_map(&vars);
-	check(&vars);
-	check_sympol(&vars);
-	check_wall(&vars);
-	calculate(&vars);
-	get_position(&vars);
-	check_map(&vars);
-	vars.mlx = mlx_init();
-	xpm_to_file(&vars);
-	vars.win = mlx_new_window(vars.mlx, vars.w_width, vars.w_height, "so_long");
-	render_map(&vars);
-	mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_hook(vars.win, 17, 0, close_window, &vars);
-	mlx_loop(vars.mlx);
+	else
+		write(2, "Error\n./so_long map.ber\n", 24);
 	return (0);
 }
