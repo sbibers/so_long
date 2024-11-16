@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:49:38 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/16 14:33:19 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 17:38:30 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@ void	ft_free(t_vars *vars)
 {
 	int	i;
 
-	i = -1;
-	while (vars->map[++i])
+	i = 0;
+	while (vars->map[i])
+	{
 		free(vars->map[i]);
+		i++;
+	}
 	free(vars->map);
 	if (vars->c && vars->win && vars->wall && vars->p && vars->em && vars->ex)
 	{
