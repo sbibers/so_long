@@ -6,40 +6,11 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/15 15:14:56 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 12:30:01 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	read_map(t_vars *vars)
-{
-	char	*str;
-	int		count;
-
-	count = -1;
-	vars->map = (char **)malloc(MAX_LINES * sizeof(char *) + 1);
-	vars->copy_map = (char **)malloc(MAX_LINES * sizeof(char *) + 1);
-	if (vars->map == NULL || vars->copy_map == NULL)
-		exit(1);
-	while (++count < MAX_LINES)
-	{
-		str = get_next_line(vars->fd);
-		if (str == NULL)
-			break ;
-		vars->map[count] = ft_strcpy(vars->map[count], str);
-		vars->copy_map[count] = ft_strcpy(vars->copy_map[count], str);
-		if (!vars->map[count] || !vars->copy_map[count])
-		{
-			free(str);
-			break ;
-		}
-		free(str);
-	}
-	vars->map[count] = NULL;
-	vars->copy_map[count] = NULL;
-	close(vars->fd);
-}
 
 void	calculate(t_vars *vars)
 {
@@ -90,10 +61,14 @@ void	xpm_to_file(t_vars *vars)
 			&vars->i_hei);
 	vars->ex = mlx_xpm_file_to_image(vars->mlx, "ex.xpm", &vars->i_hei,
 			&vars->i_wid);
-	if (!vars->p || !vars->wall || !vars->c || !vars->em || !vars->ex)
+	vars->en = mlx_xpm_file_to_image(vars->mlx, "en.xpm", &vars->i_hei,
+			&vars->i_wid);
+	if (!vars->en || !vars->p || !vars->wall || !vars->c || !vars->em
+		|| !vars->ex)
 	{
 		ft_free(vars);
 		ft_free_string(vars->copy_map);
+		ft_free_string(vars->copy_map_2);
 		write(2, "Error\nFailed to load images\n", 28);
 		exit(1);
 	}
@@ -103,6 +78,7 @@ int	main(int argc, char *argv[])
 {
 	t_vars	vars;
 
+	init(&vars);
 	vars.fd = open(argv[1], O_RDONLY);
 	if (argc != 2 || argv[1][0] == '\0' || vars.fd == -1)
 	{
@@ -115,9 +91,9 @@ int	main(int argc, char *argv[])
 	check_wall(&vars);
 	calculate(&vars);
 	get_position(&vars);
-	check_map(&vars);
 	vars.mlx = mlx_init();
 	xpm_to_file(&vars);
+	check_map(&vars);
 	vars.win = mlx_new_window(vars.mlx, vars.w_width, vars.w_height, "so_long");
 	render_map(&vars);
 	mlx_key_hook(vars.win, key_hook, &vars);

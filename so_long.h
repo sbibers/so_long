@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/15 15:15:05 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 12:24:26 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ typedef struct s_var
 	void	*c;
 	void	*em;
 	void	*ex;
+	void	*en;
 	char	**map;
 	char	**copy_map;
+	char	**copy_map_2;
 	int		i_wid;
 	int		i_hei;
 	int		w_width;
@@ -47,8 +49,10 @@ typedef struct s_var
 	int		player_x;
 	int		player_y;
 	int		fd;
+	int		count_collect;
 }			t_vars;
 
+void		init(t_vars *vars);
 size_t		ft_strlen(char *str);
 char		*ft_strchr(char *str, int c);
 char		*ft_strjoin(char *s1, char *s2);
@@ -70,10 +74,9 @@ int			key_hook(int keycode, t_vars *vars);
 int			close_window(t_vars *vars);
 void		xpm_to_file(t_vars *vars);
 void		check_wall(t_vars *vars);
-void		read_map(t_vars *vars);
 void		error_handle(t_vars *vars);
 int			check_map(t_vars *vars);
-int			dfs(t_vars *vars, int x, int y, int *collect);
-int			is_valid_move(char **map, int x, int y);
+void		flood_fill(t_vars *vars, int x, int y);
+void		read_map(t_vars *vars);
 
 #endif

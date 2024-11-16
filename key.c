@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:52:46 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/15 15:14:32 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 10:32:30 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	key_hook(int keycode, t_vars *vars)
 	else if (keycode == XK_Escape)
 	{
 		ft_free(vars);
+		ft_free_string(vars->copy_map_2);
 		ft_free_string(vars->copy_map);
 		exit(0);
 	}
@@ -70,7 +71,8 @@ int	clear_draw(t_vars *vars, int new_x, int new_y)
 	}
 	if (vars->map[new_y][new_x] == 'C')
 		vars->map[new_y][new_x] = '0';
-	else if (vars->map[new_y][new_x] == 'E' && check_exit(vars->map) == 1)
+	else if ((vars->map[new_y][new_x] == 'E' && check_exit(vars->map) == 1)
+			|| vars->map[new_y][new_x] == 'A')
 		close_window(vars);
 	if (vars->map[new_y][new_x] != 'E')
 	{
