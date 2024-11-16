@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/16 15:29:34 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 16:55:48 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ int	main(int argc, char *argv[])
 
 	if (argc == 2)
 	{
-		vars.count_collect = 0;
 		read_map(&vars, argv[1]);
 		check(&vars);
 		check_sympol(&vars);
@@ -90,8 +89,7 @@ int	main(int argc, char *argv[])
 		check_map(&vars);
 		vars.mlx = mlx_init();
 		xpm_to_file(&vars);
-		vars.win = mlx_new_window(vars.mlx, vars.w_width, vars.w_height,
-				"so_long");
+		vars.win = mlx_new_window(vars.mlx, vars.w_width, vars.w_height, "so_long");
 		render_map(&vars);
 		mlx_key_hook(vars.win, key_hook, &vars);
 		mlx_hook(vars.win, 17, 0, close_window, &vars);
