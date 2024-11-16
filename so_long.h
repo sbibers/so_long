@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/16 14:26:53 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/16 14:38:19 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define SO_LONG_H
 
 # ifndef MAX_LINES
-#  define MAX_LINES 1000
+#  define MAX_LINES 100
 # endif
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 100
 # endif
 
 # include "mlx.h"
