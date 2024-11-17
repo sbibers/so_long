@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/17 08:24:17 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/17 08:37:02 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	xpm_to_file(t_vars *vars)
 		|| !vars->ex)
 	{
 		ft_free(vars);
+		ft_free_string(vars->map);
 		ft_free_string(vars->copy_map);
 		ft_free_string(vars->copy_map_2);
 		write(2, "Error\nFailed to load images\n", 28);

@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:49:38 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/17 08:23:45 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/17 08:38:45 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@ void	ft_free_string(char **str)
 {
 	int	i;
 
-	i = 0;
-	while (str[i])
-	{
+	i = -1;
+	while (str[++i])
 		free(str[i]);
-		i++;
-	}
 	free(str);
 }
 

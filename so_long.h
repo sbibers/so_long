@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/17 08:18:59 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/17 08:31:31 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@
 
 typedef struct s_var
 {
-	char	**map;
-	char	**copy_map_2;
-	char	**copy_map;
 	int		i_wid;
 	int		i_hei;
 	int		w_width;
@@ -50,6 +47,9 @@ typedef struct s_var
 	void	*em;
 	void	*ex;
 	void	*en;
+	char	**map;
+	char	**copy_map_2;
+	char	**copy_map;
 }			t_vars;
 
 size_t		ft_strlen(char *str);
