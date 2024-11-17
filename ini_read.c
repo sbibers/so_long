@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:19:10 by salam             #+#    #+#             */
-/*   Updated: 2024/11/16 20:21:28 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/17 08:18:42 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	malloc_maps(t_vars *vars, char *file_map)
 	vars->map = (char **)malloc(MAX_LINES * sizeof(char *) + 1);
 	vars->copy_map = (char **)malloc(MAX_LINES * sizeof(char *) + 1);
 	vars->copy_map_2 = (char **)malloc(MAX_LINES * sizeof(char *) + 1);
-	if (vars->map == NULL || vars->copy_map == NULL || vars->copy_map_2 == NULL)
+	if (vars->map == NULL || vars->copy_map_2 == NULL || vars->copy_map == NULL)
 		exit(1);
 }
 
@@ -42,7 +42,7 @@ void	read_map(t_vars *vars, char *file_map)
 		vars->map[count] = ft_strcpy(vars->map[count], str);
 		vars->copy_map[count] = ft_strcpy(vars->copy_map[count], str);
 		vars->copy_map_2[count] = ft_strcpy(vars->copy_map_2[count], str);
-		if (!vars->map[count] || !vars->copy_map[count] || !vars->copy_map_2)
+		if (!vars->map[count] || !vars->copy_map_2[count])
 		{
 			free(str);
 			break ;
