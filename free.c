@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:49:38 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/17 08:38:45 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/19 20:23:22 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,14 @@ void	error_handle(t_vars *vars)
 	ft_free_string(vars->map);
 	ft_free_string(vars->copy_map);
 	ft_free_string(vars->copy_map_2);
+	exit(1);
+}
+
+void	free_win(t_vars *vars)
+{
+	ft_free_string(vars->map);
+	ft_free_string(vars->copy_map);
+	ft_free_string(vars->copy_map_2);
+	ft_free(vars);
 	exit(1);
 }

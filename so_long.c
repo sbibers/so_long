@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/17 08:37:02 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/19 19:34:11 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	calculate(t_vars *vars)
 		j++;
 	vars->w_height = j * 60;
 	vars->w_width = i * 60;
+	get_position(vars);
+	check_map(vars);
 }
 
 void	get_position(t_vars *vars)
@@ -75,23 +77,50 @@ void	xpm_to_file(t_vars *vars)
 	}
 }
 
+void	check_name(char *name)
+{
+	char	ber[5];
+	int		i;
+	int		j;
+
+	ber[0] = '.';
+	ber[1] = 'b';
+	ber[2] = 'e';
+	ber[3] = 'r';
+	ber[4] = '\0';
+	i = -1;
+	while (name[++i])
+		j = 3;
+	while (j >= 0)
+	{
+		if (ber[j--] != name[--i])
+		{
+			write(2, "Error\nmap must name .ber\n", 25);
+			exit(1);
+		}
+	}
+	check_empty(name);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_vars	vars;
 
 	if (argc == 2)
 	{
+		check_name(argv[1]);
 		read_map(&vars, argv[1]);
-		check(&vars);
-		check_sympol(&vars);
-		check_wall(&vars);
-		calculate(&vars);
-		get_position(&vars);
-		check_map(&vars);
 		vars.mlx = mlx_init();
+		if (vars.mlx == NULL)
+		{
+			write(2, "Error\ncan not init with mlx\n", 28);
+			return (1);
+		}
 		xpm_to_file(&vars);
-		vars.win = mlx_new_window(vars.mlx, vars.w_width,
-				vars.w_height, "so_long");
+		vars.win = mlx_new_window(vars.mlx, vars.w_width, vars.w_height,
+				"so_long");
+		if (vars.win == NULL)
+			free_win(&vars);
 		render_map(&vars);
 		mlx_key_hook(vars.win, key_hook, &vars);
 		mlx_hook(vars.win, 17, 0, close_window, &vars);

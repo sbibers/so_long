@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:45:30 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/17 08:57:49 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/18 16:13:43 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	check(t_vars *vars)
 			error_handle(vars);
 		i++;
 	}
+	check_sympol(vars);
+	check_wall(vars);
 }
 
 void	check_sympol(t_vars *vars)
