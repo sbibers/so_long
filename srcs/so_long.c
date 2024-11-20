@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/20 19:35:00 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/20 19:48:00 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@ void	get_position(t_vars *vars)
 
 static void	xpm_to_file(t_vars *vars)
 {
-	vars->p = mlx_xpm_file_to_image(vars->mlx, "./.xpm/p.xpm", &vars->i_wid,
+	vars->p = mlx_xpm_file_to_image(vars->mlx, "./images/p.xpm", &vars->i_wid,
 			&vars->i_hei);
-	vars->wall = mlx_xpm_file_to_image(vars->mlx, "./.xpm/w.xpm", &vars->i_wid,
+	vars->wall = mlx_xpm_file_to_image(vars->mlx, "./images/w.xpm", &vars->i_wid,
 			&vars->i_hei);
-	vars->c = mlx_xpm_file_to_image(vars->mlx, "./.xpm/collec.xpm",
+	vars->c = mlx_xpm_file_to_image(vars->mlx, "./images/collec.xpm",
 			&vars->i_wid, &vars->i_hei);
-	vars->em = mlx_xpm_file_to_image(vars->mlx, "./.xpm/em.xpm", &vars->i_hei,
+	vars->em = mlx_xpm_file_to_image(vars->mlx, "./images/em.xpm", &vars->i_hei,
 			&vars->i_hei);
-	vars->ex = mlx_xpm_file_to_image(vars->mlx, "./.xpm/ex.xpm", &vars->i_hei,
+	vars->ex = mlx_xpm_file_to_image(vars->mlx, "./images/ex.xpm", &vars->i_hei,
 			&vars->i_wid);
-	vars->en = mlx_xpm_file_to_image(vars->mlx, "./.xpm/en.xpm", &vars->i_hei,
+	vars->en = mlx_xpm_file_to_image(vars->mlx, "./images/en.xpm", &vars->i_hei,
 			&vars->i_wid);
 	if (!vars->en || !vars->p || !vars->wall || !vars->c || !vars->em
 		|| !vars->ex)
