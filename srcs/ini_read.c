@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ini_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:19:10 by salam             #+#    #+#             */
-/*   Updated: 2024/11/19 20:23:11 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/20 19:45:17 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,16 @@ static void	malloc_maps(t_vars *vars, char *file_map)
 	}
 }
 
+static void	null_maps(t_vars *vars, int count)
+{
+	vars->map[count] = NULL;
+	vars->copy_map[count] = NULL;
+	vars->copy_map_2[count] = NULL;
+	close(vars->fd);
+	check(vars);
+	calculate(vars);
+}
+
 void	read_map(t_vars *vars, char *file_map)
 {
 	char	*str;
@@ -54,23 +64,23 @@ void	read_map(t_vars *vars, char *file_map)
 
 	count = -1;
 	malloc_maps(vars, file_map);
-	while (++count < MAX_LINES)
+	while (++count <= MAX_LINES)
 	{
 		str = get_next_line(vars->fd);
 		if (str == NULL)
 			break ;
-		vars->map[count] = ft_strcpy(vars->map[count], str);
-		vars->copy_map[count] = ft_strcpy(vars->copy_map[count], str);
-		vars->copy_map_2[count] = ft_strcpy(vars->copy_map_2[count], str);
-		if (!vars->map[count] || !vars->copy_map[count]
-			|| !vars->copy_map_2[count])
-			check_malloc(vars, str);
+		else if (str[0] != '\n')
+		{
+			vars->map[count] = ft_strcpy(vars->map[count], str);
+			vars->copy_map[count] = ft_strcpy(vars->copy_map[count], str);
+			vars->copy_map_2[count] = ft_strcpy(vars->copy_map_2[count], str);
+			if (!vars->map[count] || !vars->copy_map[count]
+				|| !vars->copy_map_2[count])
+				check_malloc(vars, str);
+		}
+		else
+			count--;
 		free(str);
 	}
-	vars->map[count] = NULL;
-	vars->copy_map[count] = NULL;
-	vars->copy_map_2[count] = NULL;
-	close(vars->fd);
-	check(vars);
-	calculate(vars);
+	null_maps(vars, count);
 }

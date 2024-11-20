@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/20 13:36:45 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/20 19:39:12 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ int			key_hook(int keycode, t_vars *vars);
 void		free_win(t_vars *vars);
 void		error_handle(t_vars *vars);
 int			close_window(t_vars *vars);
-void		xpm_to_file(t_vars *vars);
 void		check_wall(t_vars *vars);
 int			check_map(t_vars *vars);
 void		flood_fill(t_vars *vars, int x, int y);

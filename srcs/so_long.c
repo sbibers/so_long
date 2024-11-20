@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/20 15:02:46 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/20 19:35:00 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	get_position(t_vars *vars)
 	}
 }
 
-void	xpm_to_file(t_vars *vars)
+static void	xpm_to_file(t_vars *vars)
 {
 	vars->p = mlx_xpm_file_to_image(vars->mlx, "./.xpm/p.xpm", &vars->i_wid,
 			&vars->i_hei);
@@ -77,7 +77,7 @@ void	xpm_to_file(t_vars *vars)
 	}
 }
 
-void	check_name(char *name)
+static void	check_name(char *name)
 {
 	char	*ber;
 	int		i;
