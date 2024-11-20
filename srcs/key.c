@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:52:46 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/19 20:22:06 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/20 20:26:41 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,32 @@ int	check_exit(char **str)
 	return (1);
 }
 
+static void	put_str(char *move_str, t_vars *vars)
+{
+	if (move_str)
+	{
+		mlx_string_put(vars->mlx, vars->win, 50, 50, 0xFFFFFF, "Moves: ");
+		mlx_string_put(vars->mlx, vars->win, 90, 50, 0xFFFFFF, move_str);
+		free(move_str);
+	}
+	else
+	{
+		ft_free(vars);
+		ft_free_string(vars->map);
+		ft_free_string(vars->copy_map);
+		ft_free_string(vars->copy_map_2);
+		write(2, "Error\nmalloc itoa\n", 18);
+		exit(1);
+	}
+}
+
 int	clear_draw(t_vars *vars, int new_x, int new_y)
 {
-	static int	i;
+	static int	move_count;
+	char		*move_str;
 
 	if (vars->map[new_y][new_x] == 'C' || vars->map[new_y][new_x] == '0')
-	{
-		write(1, "move: ", 6);
-		putnbr(++i);
-		write(1, "\n", 1);
-	}
+		move_count++;
 	if (vars->map[new_y][new_x] == 'C')
 		vars->map[new_y][new_x] = '0';
 	else if ((vars->map[new_y][new_x] == 'E' && check_exit(vars->map) == 1)
@@ -77,6 +93,8 @@ int	clear_draw(t_vars *vars, int new_x, int new_y)
 		vars->map[vars->player_y][vars->player_x] = 'P';
 		mlx_clear_window(vars->mlx, vars->win);
 		render_map(vars);
+		move_str = ft_itoa(move_count);
+		put_str(move_str, vars);
 	}
 	return (0);
 }

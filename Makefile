@@ -15,6 +15,7 @@ SRCS = srcs/so_long.c \
 		srcs/putnbr.c \
 		srcs/get_next_line.c \
 		srcs/get_next_line_utils.c \
+		srcs/ft_itoa.c \
 
 OBJ_DIR = objs
 # directory for objects file.
