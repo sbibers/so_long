@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/20 19:48:00 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/20 19:51:36 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ static void	xpm_to_file(t_vars *vars)
 {
 	vars->p = mlx_xpm_file_to_image(vars->mlx, "./images/p.xpm", &vars->i_wid,
 			&vars->i_hei);
-	vars->wall = mlx_xpm_file_to_image(vars->mlx, "./images/w.xpm", &vars->i_wid,
-			&vars->i_hei);
+	vars->wall = mlx_xpm_file_to_image(vars->mlx, "./images/w.xpm",
+			&vars->i_wid, &vars->i_hei);
 	vars->c = mlx_xpm_file_to_image(vars->mlx, "./images/collec.xpm",
 			&vars->i_wid, &vars->i_hei);
 	vars->em = mlx_xpm_file_to_image(vars->mlx, "./images/em.xpm", &vars->i_hei,
