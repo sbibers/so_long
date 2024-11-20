@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/19 19:34:12 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/20 13:36:45 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ int			clear_draw(t_vars *vars, int new_x, int new_y);
 void		putnbr(int n);
 int			key_hook(int keycode, t_vars *vars);
 void		free_win(t_vars *vars);
+void		error_handle(t_vars *vars);
 int			close_window(t_vars *vars);
 void		xpm_to_file(t_vars *vars);
 void		check_wall(t_vars *vars);
-void		error_handle(t_vars *vars);
 int			check_map(t_vars *vars);
 void		flood_fill(t_vars *vars, int x, int y);
 void		read_map(t_vars *vars, char *file_map);

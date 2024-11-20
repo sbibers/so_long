@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/19 19:34:11 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/20 15:02:46 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@ void	get_position(t_vars *vars)
 
 void	xpm_to_file(t_vars *vars)
 {
-	vars->p = mlx_xpm_file_to_image(vars->mlx, "p.xpm", &vars->i_wid,
+	vars->p = mlx_xpm_file_to_image(vars->mlx, "./.xpm/p.xpm", &vars->i_wid,
 			&vars->i_hei);
-	vars->wall = mlx_xpm_file_to_image(vars->mlx, "w.xpm", &vars->i_wid,
+	vars->wall = mlx_xpm_file_to_image(vars->mlx, "./.xpm/w.xpm", &vars->i_wid,
 			&vars->i_hei);
-	vars->c = mlx_xpm_file_to_image(vars->mlx, "collec.xpm", &vars->i_wid,
+	vars->c = mlx_xpm_file_to_image(vars->mlx, "./.xpm/collec.xpm",
+			&vars->i_wid, &vars->i_hei);
+	vars->em = mlx_xpm_file_to_image(vars->mlx, "./.xpm/em.xpm", &vars->i_hei,
 			&vars->i_hei);
-	vars->em = mlx_xpm_file_to_image(vars->mlx, "em.xpm", &vars->i_hei,
-			&vars->i_hei);
-	vars->ex = mlx_xpm_file_to_image(vars->mlx, "ex.xpm", &vars->i_hei,
+	vars->ex = mlx_xpm_file_to_image(vars->mlx, "./.xpm/ex.xpm", &vars->i_hei,
 			&vars->i_wid);
-	vars->en = mlx_xpm_file_to_image(vars->mlx, "en.xpm", &vars->i_hei,
+	vars->en = mlx_xpm_file_to_image(vars->mlx, "./.xpm/en.xpm", &vars->i_hei,
 			&vars->i_wid);
 	if (!vars->en || !vars->p || !vars->wall || !vars->c || !vars->em
 		|| !vars->ex)
@@ -79,18 +79,20 @@ void	xpm_to_file(t_vars *vars)
 
 void	check_name(char *name)
 {
-	char	ber[5];
+	char	*ber;
 	int		i;
 	int		j;
 
-	ber[0] = '.';
-	ber[1] = 'b';
-	ber[2] = 'e';
-	ber[3] = 'r';
-	ber[4] = '\0';
-	i = -1;
-	while (name[++i])
-		j = 3;
+	if (ft_strlen(name) < 4)
+	{
+		write(2, "Error\nmap must name .ber\n", 25);
+		exit(1);
+	}
+	i = 0;
+	j = 3;
+	ber = ".ber";
+	while (name[i])
+		i++;
 	while (j >= 0)
 	{
 		if (ber[j--] != name[--i])
@@ -113,7 +115,7 @@ int	main(int argc, char *argv[])
 		vars.mlx = mlx_init();
 		if (vars.mlx == NULL)
 		{
-			write(2, "Error\ncan not init with mlx\n", 28);
+			free_win(&vars);
 			return (1);
 		}
 		xpm_to_file(&vars);

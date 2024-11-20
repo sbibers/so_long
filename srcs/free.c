@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:49:38 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/19 20:23:22 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/20 14:55:34 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,11 @@ void	ft_free(t_vars *vars)
 		mlx_destroy_image(vars->mlx, vars->wall);
 	if (vars->win)
 		mlx_destroy_window(vars->mlx, vars->win);
-	mlx_destroy_display(vars->mlx);
-	free(vars->mlx);
+	if (vars->mlx)
+	{
+		mlx_destroy_display(vars->mlx);
+		free(vars->mlx);
+	}
 }
 
 int	close_window(t_vars *vars)
@@ -63,6 +66,7 @@ void	error_handle(t_vars *vars)
 
 void	free_win(t_vars *vars)
 {
+	write(2, "Error\ncan not initialization\n", 29);
 	ft_free_string(vars->map);
 	ft_free_string(vars->copy_map);
 	ft_free_string(vars->copy_map_2);

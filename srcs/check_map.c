@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 09:56:56 by salam             #+#    #+#             */
-/*   Updated: 2024/11/18 16:26:38 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/20 14:48:43 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	check_empty(char *map)
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
 	{
-		write(2, "Error\nno such file or permission to read\n", 41);
+		write(2, "Error\nno such file or no permission to read\n", 44);
 		exit(1);
 	}
 	byte_read = read(fd, buff, 1);
