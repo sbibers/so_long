@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/20 19:51:36 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/21 15:06:46 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,10 @@ static void	xpm_to_file(t_vars *vars)
 			&vars->i_wid);
 	vars->en = mlx_xpm_file_to_image(vars->mlx, "./images/en.xpm", &vars->i_hei,
 			&vars->i_wid);
+	vars->p_2 = mlx_xpm_file_to_image(vars->mlx, "./images/p_2.xpm",
+			&vars->i_hei, &vars->i_wid);
 	if (!vars->en || !vars->p || !vars->wall || !vars->c || !vars->em
-		|| !vars->ex)
+		|| !vars->ex || !vars->p_2)
 	{
 		ft_free(vars);
 		ft_free_string(vars->map);
@@ -123,7 +125,7 @@ int	main(int argc, char *argv[])
 				"so_long");
 		if (vars.win == NULL)
 			free_win(&vars);
-		render_map(&vars);
+		render_map(&vars, 0);
 		mlx_key_hook(vars.win, key_hook, &vars);
 		mlx_hook(vars.win, 17, 0, close_window, &vars);
 		mlx_loop(vars.mlx);

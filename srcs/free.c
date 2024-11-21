@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:49:38 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/20 14:55:34 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/21 13:55:09 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	ft_free_string(char **str)
 
 void	ft_free(t_vars *vars)
 {
+	if (vars->p_2)
+		mlx_destroy_image(vars->mlx, vars->p_2);
 	if (vars->c)
 		mlx_destroy_image(vars->mlx, vars->c);
 	if (vars->en)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/20 20:29:19 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/21 15:04:23 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_var
 	void	*win;
 	void	*img;
 	void	*p;
+	void	*p_2;
 	void	*wall;
 	void	*c;
 	void	*em;
@@ -64,10 +65,9 @@ void		check_sympol(t_vars *vars);
 char		*ft_strcpy(char *dest, char *src);
 void		calculate(t_vars *vars);
 int			check_exit(char **str);
-void		put_map(t_vars *vars, int i, int j);
-void		render_map(t_vars *vars);
+void		render_map(t_vars *vars, int flag);
 void		get_position(t_vars *vars);
-int			clear_draw(t_vars *vars, int new_x, int new_y);
+int			clear_draw(t_vars *vars, int new_x, int new_y, int flag);
 void		putnbr(int n);
 int			key_hook(int keycode, t_vars *vars);
 void		free_win(t_vars *vars);

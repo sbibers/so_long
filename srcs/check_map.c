@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 09:56:56 by salam             #+#    #+#             */
-/*   Updated: 2024/11/20 14:48:43 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/21 15:24:24 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	check_empty(char *map)
 		exit(1);
 	}
 	byte_read = read(fd, buff, 1);
+	close(fd);
 	if (byte_read == 0)
 	{
 		write(2, "Error\nempty map\n", 16);

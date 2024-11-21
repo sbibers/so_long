@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ini_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:19:10 by salam             #+#    #+#             */
-/*   Updated: 2024/11/20 19:45:17 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/21 15:31:09 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	check_malloc(t_vars *vars, char *str)
 		ft_free_string(vars->copy_map);
 	if (vars->copy_map_2 != NULL)
 		ft_free_string(vars->copy_map_2);
+	close(vars->fd);
 	exit(1);
 }
 
@@ -43,6 +44,7 @@ static void	malloc_maps(t_vars *vars, char *file_map)
 			ft_free_string(vars->copy_map);
 		if (vars->copy_map_2 != NULL)
 			ft_free_string(vars->copy_map_2);
+		close(vars->fd);
 		exit(1);
 	}
 }
@@ -52,7 +54,6 @@ static void	null_maps(t_vars *vars, int count)
 	vars->map[count] = NULL;
 	vars->copy_map[count] = NULL;
 	vars->copy_map_2[count] = NULL;
-	close(vars->fd);
 	check(vars);
 	calculate(vars);
 }
@@ -82,5 +83,6 @@ void	read_map(t_vars *vars, char *file_map)
 			count--;
 		free(str);
 	}
+	close(vars->fd);
 	null_maps(vars, count);
 }

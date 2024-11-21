@@ -3,23 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   put_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:47:47 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/16 17:36:05 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/21 15:06:26 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	put_map(t_vars *vars, int i, int j)
+static void	norm(t_vars *vars, int i, int j, int flag)
+{
+	if (vars->map[i][j] == 'P' && flag == 1)
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->p, j * vars->i_wid,
+			i * vars->i_hei);
+	else if (vars->map[i][j] == 'P' && flag == 0)
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->p_2,
+			j * vars->i_wid, i * vars->i_hei);
+}
+
+static void	put_map(t_vars *vars, int i, int j, int flag)
 {
 	if (vars->map[i][j] == '1')
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->wall, j
 			* vars->i_wid, i * vars->i_hei);
 	else if (vars->map[i][j] == 'P')
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->p, j * vars->i_wid,
-			i * vars->i_hei);
+		norm(vars, i, j, flag);
 	else if (vars->map[i][j] == 'C')
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->c, j * vars->i_wid,
 			i * vars->i_hei);
@@ -40,7 +49,7 @@ void	put_map(t_vars *vars, int i, int j)
 	}
 }
 
-void	render_map(t_vars *vars)
+void	render_map(t_vars *vars, int flag)
 {
 	int	i;
 	int	j;
@@ -50,6 +59,6 @@ void	render_map(t_vars *vars)
 	{
 		j = -1;
 		while (vars->map[i][++j] != '\0' && vars->map[i][j] != '\n')
-			put_map(vars, i, j);
+			put_map(vars, i, j, flag);
 	}
 }

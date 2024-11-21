@@ -2,7 +2,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -I./include
 
-X11_FLAGS = -I./minilibx-linux -L./minilibx-linux -lmlx -lXext -lX11
+X11_FLAGS = -lmlx -lXext -lX11
 #-lmlx : for library mlx, -lXext : for library Xext for X11, -lX11 : for X11.
 
 SRCS = srcs/so_long.c \
