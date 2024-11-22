@@ -6,13 +6,13 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 09:56:56 by salam             #+#    #+#             */
-/*   Updated: 2024/11/22 12:43:56 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/22 13:44:30 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	flood_fill(t_vars *vars, int x, int y)
+static void	flood_fill(t_vars *vars, int x, int y)
 {
 	if (x < 0 || y < 0 || vars->copy_map[y][x] == '1'
 		|| vars->copy_map[y][x] == '\0' || vars->copy_map[y][x] == 'E'
@@ -29,7 +29,7 @@ void	flood_fill(t_vars *vars, int x, int y)
 	flood_fill(vars, x, y + 1);
 }
 
-int	flood_fill_exit(t_vars *vars, int x, int y)
+static int	flood_fill_exit(t_vars *vars, int x, int y)
 {
 	if (x < 0 || y < 0 || vars->copy_map_2[y][x] == '1'
 		|| vars->copy_map_2[y][x] == '\0'

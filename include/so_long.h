@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/22 13:09:03 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/22 13:44:37 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void		error_handle(t_vars *vars);
 int			close_window(t_vars *vars);
 void		check_wall(t_vars *vars);
 int			check_map(t_vars *vars);
-void		flood_fill(t_vars *vars, int x, int y);
 void		read_map(t_vars *vars, char *file_map);
 void		check_empty(char *map);
 char		*ft_itoa(int n);
