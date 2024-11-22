@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/21 15:04:23 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/22 13:09:03 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ char		*ft_strcpy(char *dest, char *src);
 void		calculate(t_vars *vars);
 int			check_exit(char **str);
 void		render_map(t_vars *vars, int flag);
-void		get_position(t_vars *vars);
 int			clear_draw(t_vars *vars, int new_x, int new_y, int flag);
 void		putnbr(int n);
 int			key_hook(int keycode, t_vars *vars);

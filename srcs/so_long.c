@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/21 15:06:46 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/22 13:09:58 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static void	get_position(t_vars *vars)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (vars->map[i])
+	{
+		j = 0;
+		while (vars->map[i][j])
+		{
+			if (vars->map[i][j] == 'P')
+			{
+				vars->player_x = j;
+				vars->player_y = i;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 void	calculate(t_vars *vars)
 {
@@ -27,28 +50,6 @@ void	calculate(t_vars *vars)
 	vars->w_width = i * 60;
 	get_position(vars);
 	check_map(vars);
-}
-
-void	get_position(t_vars *vars)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (vars->map[i])
-	{
-		j = 0;
-		while (vars->map[i][j])
-		{
-			if (vars->map[i][j] == 'P')
-			{
-				vars->player_x = j;
-				vars->player_y = i;
-			}
-			j++;
-		}
-		i++;
-	}
 }
 
 static void	xpm_to_file(t_vars *vars)

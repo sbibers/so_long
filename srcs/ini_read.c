@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ini_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:19:10 by salam             #+#    #+#             */
-/*   Updated: 2024/11/21 15:31:09 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/22 12:55:39 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void	check_malloc(t_vars *vars, char *str)
 {
+	write(2, "Error\nfail allocate ft_strcpy\n", 30);
 	free(str);
 	if (vars->map != NULL)
 		ft_free_string(vars->map);
@@ -38,6 +39,7 @@ static void	malloc_maps(t_vars *vars, char *file_map)
 	vars->copy_map_2 = (char **)malloc((MAX_LINES * sizeof(char *)) + 1);
 	if (vars->map == NULL || vars->copy_map_2 == NULL || vars->copy_map == NULL)
 	{
+		write(2, "Error\nfaild allocate maps\n", 26);
 		if (vars->map != NULL)
 			ft_free_string(vars->map);
 		if (vars->copy_map != NULL)

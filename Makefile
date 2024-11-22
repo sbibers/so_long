@@ -2,8 +2,12 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -I./include
 
-X11_FLAGS = -lmlx -lXext -lX11
-#-lmlx : for library mlx, -lXext : for library Xext for X11, -lX11 : for X11.
+X11_FLAGS = -I./minilibx-linux -L./minilibx-linux -lmlx -lXext -lX11
+# what is the X11 : allows linux display graphical interface.
+# componentes of X11 ? 1) client (application) server : control the screen, the client are the apps (web browser) client send request to X server, X server takes care to showing on the screen.
+# 2) X server : handle the screen and input device (keyboard/mous) like X.Org.
+# 3) Window manager : control how windows look.
+# -lmlx : for library mlx, -lXext : for X Extensions library, -lX11 : for X11 that allows to connect with X widnow system.
 
 SRCS = srcs/so_long.c \
 		srcs/check.c \

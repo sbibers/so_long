@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:52:46 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/21 15:41:38 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/22 13:04:33 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void	put_str(char *move_str, t_vars *vars, int move_count)
 		ft_free_string(vars->map);
 		ft_free_string(vars->copy_map);
 		ft_free_string(vars->copy_map_2);
-		write(2, "Error\nmalloc itoa\n", 18);
+		write(2, "Error\nwrong allocate ft_itoa\n", 29);
 		exit(1);
 	}
 }

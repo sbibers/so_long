@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   put_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:47:47 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/21 15:06:26 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/22 12:44:47 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	norm(t_vars *vars, int i, int j, int flag)
+static void	player_move(t_vars *vars, int i, int j, int flag)
 {
 	if (vars->map[i][j] == 'P' && flag == 1)
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->p, j * vars->i_wid,
@@ -28,7 +28,7 @@ static void	put_map(t_vars *vars, int i, int j, int flag)
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->wall, j
 			* vars->i_wid, i * vars->i_hei);
 	else if (vars->map[i][j] == 'P')
-		norm(vars, i, j, flag);
+		player_move(vars, i, j, flag);
 	else if (vars->map[i][j] == 'C')
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->c, j * vars->i_wid,
 			i * vars->i_hei);
