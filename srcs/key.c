@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:52:46 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/22 13:04:33 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/23 11:23:49 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void	put_str(char *move_str, t_vars *vars, int move_count)
 	{
 		mlx_string_put(vars->mlx, vars->win, 50, 50, 0xFFFFFF, "Moves: ");
 		mlx_string_put(vars->mlx, vars->win, 90, 50, 0xFFFFFF, move_str);
-		write(1, "Move : ", 8);
+		write(1, "Move : ", 7);
 		putnbr(move_count);
 		write(1, "\n", 1);
 		free(move_str);
@@ -98,16 +98,19 @@ static void	put_str(char *move_str, t_vars *vars, int move_count)
 
 int	clear_draw(t_vars *vars, int new_x, int new_y, int flag)
 {
-	static int	move_count = 0;
 	char		*move_str;
 
 	if (vars->map[new_y][new_x] == 'C' || vars->map[new_y][new_x] == '0')
-		move_count++;
+		vars->move_count++;
 	if (vars->map[new_y][new_x] == 'C')
 		vars->map[new_y][new_x] = '0';
 	else if ((vars->map[new_y][new_x] == 'E' && check_exit(vars->map) == 1)
 			|| vars->map[new_y][new_x] == 'A')
+	{
+		if (vars->map[new_y][new_x] == 'A')
+			write(1, "Losser :(\n", 10);
 		close_window(vars);
+	}
 	if (vars->map[new_y][new_x] != 'E')
 	{
 		vars->map[vars->player_y][vars->player_x] = '0';
@@ -116,8 +119,8 @@ int	clear_draw(t_vars *vars, int new_x, int new_y, int flag)
 		vars->map[vars->player_y][vars->player_x] = 'P';
 		mlx_clear_window(vars->mlx, vars->win);
 		render_map(vars, flag);
-		move_str = ft_itoa(move_count);
-		put_str(move_str, vars, move_count);
+		move_str = ft_itoa(vars->move_count);
+		put_str(move_str, vars, vars->move_count);
 	}
 	return (0);
 }

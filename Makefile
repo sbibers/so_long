@@ -2,7 +2,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -I./include
 
-X11_FLAGS = -I./minilibx-linux -L./minilibx-linux -lmlx -lXext -lX11
+X11_FLAGS = -lmlx -lXext -lX11
 # what is the X11 : allows linux display graphical interface.
 # componentes of X11 ? 1) client (application) server : control the screen, the client are the apps (web browser) client send request to X server, X server takes care to showing on the screen.
 # 2) X server : handle the screen and input device (keyboard/mous) like X.Org.

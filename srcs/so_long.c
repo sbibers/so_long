@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/22 13:09:58 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/23 11:20:19 by sbibers          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	calculate(t_vars *vars)
 
 static void	xpm_to_file(t_vars *vars)
 {
+	vars->move_count = 0;
 	vars->p = mlx_xpm_file_to_image(vars->mlx, "./images/p.xpm", &vars->i_wid,
 			&vars->i_hei);
 	vars->wall = mlx_xpm_file_to_image(vars->mlx, "./images/w.xpm",
