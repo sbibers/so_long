@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 19:57:22 by salam             #+#    #+#             */
-/*   Updated: 2024/11/20 19:59:07 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/24 19:21:54 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ static void	ft_stritoa(char *str, int n, size_t len)
 }
 
 char	*ft_itoa(int n)
+// convert from int to ascii.
 {
 	char		*str;
 	size_t		len;

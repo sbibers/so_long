@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_map.c                                          :+:      :+:    :+:   */
+/*   ft_putmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 13:47:47 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/23 11:20:28 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:27:12 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 static void	player_move(t_vars *vars, int i, int j, int flag)
 {
-	if (vars->map[i][j] == 'P' && flag == 1)
+	if (flag == 1)
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->p, j * vars->i_wid,
 			i * vars->i_hei);
-	else if (vars->map[i][j] == 'P' && flag == 0)
+	else if (flag == 0)
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->p_2,
 			j * vars->i_wid, i * vars->i_hei);
 }
 
 static void	put_map(t_vars *vars, int i, int j, int flag)
+// put all the images in the correct place.
 {
 	if (vars->map[i][j] == '1')
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->wall, j
@@ -40,7 +41,7 @@ static void	put_map(t_vars *vars, int i, int j, int flag)
 			i * vars->i_hei);
 	else if (vars->map[i][j] == 'E')
 	{
-		if (check_exit(vars->map))
+		if (number_of_collect(vars->map))
 			mlx_put_image_to_window(vars->mlx, vars->win, vars->ex, j
 				* vars->i_wid, i * vars->i_hei);
 		else

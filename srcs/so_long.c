@@ -6,13 +6,14 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/24 13:45:48 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/24 19:50:49 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 static void	get_position(t_vars *vars)
+// find the position of the player.
 {
 	int	i;
 	int	j;
@@ -35,7 +36,8 @@ static void	get_position(t_vars *vars)
 	}
 }
 
-void	calculate(t_vars *vars)
+static void	calculate(t_vars *vars)
+// calculate the width and height to know size of the window.
 {
 	int	i;
 	int	j;
@@ -48,13 +50,11 @@ void	calculate(t_vars *vars)
 		j++;
 	vars->w_height = j * 60;
 	vars->w_width = i * 60;
-	get_position(vars);
-	check_map(vars);
 }
 
 static void	xpm_to_file(t_vars *vars)
+// convert .xpm file to image.
 {
-	vars->move_count = 0;
 	vars->p = mlx_xpm_file_to_image(vars->mlx, "./images/p.xpm", &vars->i_wid,
 			&vars->i_hei);
 	vars->wall = mlx_xpm_file_to_image(vars->mlx, "./images/w.xpm",
@@ -81,31 +81,18 @@ static void	xpm_to_file(t_vars *vars)
 	}
 }
 
-static void	check_name(char *name)
+static void	check(t_vars *vars, char *file_name)
+// read the map and check it.
 {
-	char	*ber;
-	int		i;
-	int		j;
-
-	if (ft_strlen(name) < 4)
-	{
-		write(2, "Error\nmap must name .ber\n", 25);
-		exit(1);
-	}
-	i = 0;
-	j = 3;
-	ber = ".ber";
-	while (name[i])
-		i++;
-	while (j >= 0)
-	{
-		if (ber[j--] != name[--i])
-		{
-			write(2, "Error\nmap must name .ber\n", 25);
-			exit(1);
-		}
-	}
-	check_empty(name);
+	check_name(file_name);
+	check_empty(file_name);
+	read_map(vars, file_name);
+	check_size(vars);
+	check_sympol(vars);
+	check_wall(vars);
+	calculate(vars);
+	get_position(vars);
+	check_path(vars);
 }
 
 int	main(int argc, char *argv[])
@@ -114,8 +101,8 @@ int	main(int argc, char *argv[])
 
 	if (argc == 2)
 	{
-		check_name(argv[1]);
-		read_map(&vars, argv[1]);
+		vars.move_count = 0;
+		check(&vars, argv[1]);
 		vars.mlx = mlx_init();
 		if (vars.mlx == NULL)
 		{

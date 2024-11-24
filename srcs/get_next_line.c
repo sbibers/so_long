@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 10:37:53 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/13 14:35:23 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:30:46 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ static char	*ft_save(char *save)
 }
 
 char	*get_next_line(int fd)
+// read line by line.
 {
 	char		*line;
 	static char	*save;

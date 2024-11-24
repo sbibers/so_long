@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/23 18:22:36 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:46:47 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,33 +50,53 @@ typedef struct s_var
 	void	*ex;
 	void	*en;
 	char	**map;
-	char	**copy_map_2;
 	char	**copy_map;
+	char	**copy_map_2;
 }			t_vars;
 
+// get_next_line.c
+char		*get_next_line(int fd);
+
+// get_next_line_utils.c
 size_t		ft_strlen(char *str);
 char		*ft_strchr(char *str, int c);
 char		*ft_strjoin(char *s1, char *s2);
-char		*get_next_line(int fd);
+
+// ft_read_map.c
+void		read_map(t_vars *vars, char *file_map);
+
+// check_1.c
+void		check_size(t_vars *vars);
+void		check_sympol(t_vars *vars);
+void		check_wall(t_vars *vars);
+void		check_empty(char *map);
+void		check_name(char *name);
+
+// check_2.c
+int			check_path(t_vars *vars);
+
+//ft_free.c
 void		ft_free_string(char **str);
 void		ft_free(t_vars *vars);
-void		check(t_vars *vars);
-int			check_char(char c);
-void		check_sympol(t_vars *vars);
-char		*ft_strcpy(char *dest, char *src);
-void		calculate(t_vars *vars);
-int			check_exit(char **str);
-void		render_map(t_vars *vars, int flag);
-int			clear_draw(t_vars *vars, int new_x, int new_y, int flag);
-void		putnbr(int n);
-int			key_hook(int keycode, t_vars *vars);
 void		free_win(t_vars *vars);
-void		error_handle(t_vars *vars);
 int			close_window(t_vars *vars);
-void		check_wall(t_vars *vars);
-int			check_map(t_vars *vars);
-void		read_map(t_vars *vars, char *file_map);
-void		check_empty(char *map);
+void		error_handle(t_vars *vars);
+
+// ft_key.c
+int			key_hook(int keycode, t_vars *vars);
+int			number_of_collect(char **str);
+
+// ft_putmap.c
+void		render_map(t_vars *vars, int flag);
+
+// ft_strcpy.c
+char		*ft_strcpy(char *dest, char *src);
+int			check_char(char c);
+
+// ft_putnbr.c
+void		putnbr(int n);
+
+// ft_itoa.c
 char		*ft_itoa(int n);
 
 #endif

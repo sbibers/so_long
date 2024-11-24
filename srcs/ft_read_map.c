@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ini_read.c                                         :+:      :+:    :+:   */
+/*   ft_read_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 12:19:10 by salam             #+#    #+#             */
-/*   Updated: 2024/11/23 18:23:53 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/24 19:29:20 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	check_malloc(t_vars *vars, char *str)
 }
 
 static void	malloc_maps(t_vars *vars, char *file_map)
+// allocate the double pointer to read the map and check the allocate.
 {
 	vars->fd = open(file_map, O_RDONLY);
 	if (vars->fd == -1)
@@ -56,11 +57,10 @@ static void	null_maps(t_vars *vars, int count)
 	vars->map[count] = NULL;
 	vars->copy_map[count] = NULL;
 	vars->copy_map_2[count] = NULL;
-	check(vars);
-	calculate(vars);
 }
 
 void	read_map(t_vars *vars, char *file_map)
+// read map from the file .ber
 {
 	char	*str;
 	int		count;

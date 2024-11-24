@@ -1,36 +1,68 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   check_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 13:45:30 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/20 19:39:21 by salam            ###   ########.fr       */
+/*   Created: 2024/11/24 18:52:01 by salam             #+#    #+#             */
+/*   Updated: 2024/11/24 19:15:31 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*ft_strcpy(char *dest, char *src)
+void	check_name(char *name)
+// check the file name must be .ber
 {
-	int	len;
+	char	*ber;
+	int		i;
+	int		j;
 
-	len = ft_strlen(src);
-	dest = (char *)malloc(len + 1);
-	if (dest == NULL)
-		return (NULL);
-	len = 0;
-	while (src[len])
+	if (ft_strlen(name) < 4)
 	{
-		dest[len] = src[len];
-		len++;
+		write(2, "Error\nmap must name .ber\n", 25);
+		exit(1);
 	}
-	dest[len] = '\0';
-	return (dest);
+	i = 0;
+	j = 3;
+	ber = ".ber";
+	while (name[i])
+		i++;
+	while (j >= 0)
+	{
+		if (ber[j--] != name[--i])
+		{
+			write(2, "Error\nmap must be name .ber\n", 28);
+			exit(1);
+		}
+	}
 }
 
-void	check(t_vars *vars)
+void	check_empty(char *map)
+// check if the file map is empty.
+{
+	int		fd;
+	char	buff[1];
+	int		byte_read;
+
+	fd = open(map, O_RDONLY);
+	if (fd == -1)
+	{
+		write(2, "Error\nno such file or no permission to read\n", 44);
+		exit(1);
+	}
+	byte_read = read(fd, buff, 1);
+	close(fd);
+	if (byte_read == 0)
+	{
+		write(2, "Error\nempty map\n", 16);
+		exit(1);
+	}
+}
+
+void	check_size(t_vars *vars)
+// check if the map contains a wright size.
 {
 	int	size;
 	int	i;
@@ -49,11 +81,10 @@ void	check(t_vars *vars)
 			error_handle(vars);
 		i++;
 	}
-	check_sympol(vars);
-	check_wall(vars);
 }
 
 void	check_sympol(t_vars *vars)
+// check if the map فt contains the required charactersز
 {
 	int	i;
 	int	j;
@@ -81,6 +112,7 @@ void	check_sympol(t_vars *vars)
 }
 
 void	check_wall(t_vars *vars)
+// check if the map سurrounded by walls.
 {
 	int	i;
 	int	height;
@@ -107,14 +139,4 @@ void	check_wall(t_vars *vars)
 			error_handle(vars);
 		i++;
 	}
-}
-
-int	check_char(char c)
-{
-	if (c != '1' && c != '0' && c != 'C' && c != 'P' && c != 'E' && c != '\n'
-		&& c != 'A')
-	{
-		return (1);
-	}
-	return (0);
 }

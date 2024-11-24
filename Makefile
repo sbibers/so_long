@@ -10,13 +10,14 @@ X11_FLAGS = -I./minilibx-linux -L./minilibx-linux -lmlx -lXext -lX11
 # -lmlx : for library mlx, -lXext : for X Extensions library, -lX11 : for X11 that allows to connect with X widnow system.
 
 SRCS = srcs/so_long.c \
-		srcs/check.c \
-		srcs/check_map.c \
-		srcs/ini_read.c \
-		srcs/free.c \
-		srcs/put_map.c \
-		srcs/key.c \
-		srcs/putnbr.c \
+		srcs/check_1.c \
+		srcs/check_2.c \
+		srcs/ft_free.c \
+		srcs/ft_read_map.c \
+		srcs/ft_putmap.c \
+		srcs/ft_key.c \
+		srcs/ft_strcpy.c \
+		srcs/ft_putnbr.c \
 		srcs/get_next_line.c \
 		srcs/get_next_line_utils.c \
 		srcs/ft_itoa.c \
