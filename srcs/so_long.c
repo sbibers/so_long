@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbibers <sbibers@student.42amman.com>      +#+  +:+       +#+        */
+/*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/23 11:20:19 by sbibers          ###   ########.fr       */
+/*   Updated: 2024/11/24 13:45:48 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int	main(int argc, char *argv[])
 		if (vars.win == NULL)
 			free_win(&vars);
 		render_map(&vars, 0);
-		mlx_key_hook(vars.win, key_hook, &vars);
+		mlx_hook(vars.win, 2, 1L << 0, key_hook, &vars);
 		mlx_hook(vars.win, 17, 0, close_window, &vars);
 		mlx_loop(vars.mlx);
 	}
