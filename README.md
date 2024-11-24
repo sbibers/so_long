@@ -56,7 +56,7 @@ To play, clone this repo and cd into it:
 1-git clone the repo
 2-cd so_long
 3-make
-4-./so_long maps/maps_1.ber
+4-./so_long maps/map_1.ber
 
 42 is a global educational initiative offering a unique approach to learning technology:
 no teachers, no traditional classrooms, and a focus on peer-to-peer learning, where
