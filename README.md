@@ -1,4 +1,4 @@
-A small 2D Game made using the MiniLibX Graphics Library - Textures, sprites and tiles included.
+so_long : A small 2D Game made using the MiniLibX Graphics Library - Textures, sprites and tiles included.
 
 What is so_long?
 The fifth project in the 42 programming school's curriculum is the first graphical
