@@ -39,7 +39,7 @@ KEY	  OBJECT
 W   	⬆️ Move up
 A   	⬅️ Move left
 S   	⬇️ Move down
-D    	➡️ Move para right
+D    	➡️ Move right
 Esc	  Close the game
 
 After getting all the coin bags, the exit opens and you can escape downstairs.
