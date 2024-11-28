@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:03:08 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/24 19:46:47 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/28 08:21:45 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void		check_name(char *name);
 
 // check_2.c
 int			check_path(t_vars *vars);
+int			check_char(char c);
 
 //ft_free.c
 void		ft_free_string(char **str);
@@ -89,14 +90,13 @@ int			number_of_collect(char **str);
 // ft_putmap.c
 void		render_map(t_vars *vars, int flag);
 
-// ft_strcpy.c
-char		*ft_strcpy(char *dest, char *src);
-int			check_char(char c);
-
 // ft_putnbr.c
 void		putnbr(int n);
 
 // ft_itoa.c
 char		*ft_itoa(int n);
+
+// ft_split.c
+char		**ft_split(char *s, char c);
 
 #endif

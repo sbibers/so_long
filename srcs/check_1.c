@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 18:52:01 by salam             #+#    #+#             */
-/*   Updated: 2024/11/24 19:15:31 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/28 08:21:21 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ void	check_size(t_vars *vars)
 	int	j;
 
 	size = 0;
-	while (vars->map[0][size] != '\n' && vars->map[0][size] != '\0')
+	while (vars->map[0][size] != '\0')
 		size++;
 	i = 1;
 	while (vars->map[i])
 	{
 		j = 0;
-		while (vars->map[i][j] != '\0' && vars->map[i][j] != '\n')
+		while (vars->map[i][j] != '\0')
 			j++;
 		if (j != size)
 			error_handle(vars);
@@ -84,7 +84,7 @@ void	check_size(t_vars *vars)
 }
 
 void	check_sympol(t_vars *vars)
-// check if the map فt contains the required charactersز
+// check if the map it contains the required characters.
 {
 	int	i;
 	int	j;
@@ -112,7 +112,7 @@ void	check_sympol(t_vars *vars)
 }
 
 void	check_wall(t_vars *vars)
-// check if the map سurrounded by walls.
+// check if the map urrounded by walls.
 {
 	int	i;
 	int	height;
@@ -121,11 +121,9 @@ void	check_wall(t_vars *vars)
 	i = 0;
 	while (vars->map[height])
 	{
-		if (vars->map[height][0] == '\n')
-			error_handle(vars);
 		height++;
 	}
-	while (vars->map[0][i] && vars->map[0][i] != '\n')
+	while (vars->map[0][i])
 	{
 		if (vars->map[0][i] != '1' || vars->map[height - 1][i] != '1')
 			error_handle(vars);
@@ -135,7 +133,7 @@ void	check_wall(t_vars *vars)
 	while (vars->map[i] != NULL)
 	{
 		if (vars->map[i][0] != '1' || vars->map[i][ft_strlen(vars->map[0])
-			- 2] != '1')
+			- 1] != '1')
 			error_handle(vars);
 		i++;
 	}

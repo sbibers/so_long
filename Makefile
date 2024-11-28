@@ -16,11 +16,11 @@ SRCS = srcs/so_long.c \
 		srcs/ft_read_map.c \
 		srcs/ft_putmap.c \
 		srcs/ft_key.c \
-		srcs/ft_strcpy.c \
 		srcs/ft_putnbr.c \
 		srcs/get_next_line.c \
 		srcs/get_next_line_utils.c \
 		srcs/ft_itoa.c \
+		srcs/ft_split.c \
 
 OBJ_DIR = objs
 # directory for objects file.

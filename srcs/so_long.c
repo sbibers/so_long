@@ -6,7 +6,7 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:43:13 by sbibers           #+#    #+#             */
-/*   Updated: 2024/11/24 19:50:49 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/28 07:48:08 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	calculate(t_vars *vars)
 	int	j;
 
 	i = 0;
-	while (vars->map[0][i] != '\n')
+	while (vars->map[0][i] != '\0')
 		i++;
 	j = 0;
 	while (vars->map[j] != NULL)

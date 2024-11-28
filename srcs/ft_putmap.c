@@ -59,7 +59,7 @@ void	render_map(t_vars *vars, int flag)
 	while (vars->map[++i] != NULL)
 	{
 		j = -1;
-		while (vars->map[i][++j] != '\0' && vars->map[i][j] != '\n')
+		while (vars->map[i][++j] != '\0')
 			put_map(vars, i, j, flag);
 	}
 }

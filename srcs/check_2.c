@@ -6,11 +6,22 @@
 /*   By: salam <salam@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 09:56:56 by salam             #+#    #+#             */
-/*   Updated: 2024/11/24 19:15:58 by salam            ###   ########.fr       */
+/*   Updated: 2024/11/28 08:21:09 by salam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	check_char(char c)
+// check if the map have any wrong char.
+{
+	if (c != '1' && c != '0' && c != 'C' && c != 'P' && c != 'E' && c != '\n'
+		&& c != 'A')
+	{
+		return (1);
+	}
+	return (0);
+}
 
 static void	flood_fill_collect(t_vars *vars, int x, int y)
 {
@@ -50,6 +61,7 @@ static int	flood_fill_exit(t_vars *vars, int x, int y)
 }
 
 int	check_path(t_vars *vars)
+// Check if there is a way to win.
 {
 	int	i;
 	int	j;
