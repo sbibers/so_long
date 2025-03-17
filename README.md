@@ -116,7 +116,7 @@ so_long/
 ## 📅 **Project Milestones**
 
 - **Completion Date:** 2024-11-13
-- **Grade:** 125/100
+- **Grade:** 124/100
 
 ## 📜 **License**
 
