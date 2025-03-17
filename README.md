@@ -2,6 +2,8 @@
 
 **so_long** is a small 2D game created using the **MiniLibX Graphics Library**. It's the fifth project in the 42 programming school's curriculum. This game was developed from scratch and focuses on the core concepts of graphical programming.
 
+![Game Screenshot](Screenshot%202025-03-17%20211507.png)
+
 ---
 
 ## 🎮 **What is so_long?**
