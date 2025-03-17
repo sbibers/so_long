@@ -1,12 +1,12 @@
-# 🕹️ **so_long**: A 2D Game Project
+# 🕹️ **so_long: A 2D Game Project**
 
-**so_long** is a small 2D game created using the **MiniLibX** Graphics Library. It’s the fifth project in the 42 programming school's curriculum. This game was developed from scratch and focuses on the core concepts of graphical programming.
+**so_long** is a small 2D game created using the **MiniLibX Graphics Library**. It's the fifth project in the 42 programming school's curriculum. This game was developed from scratch and focuses on the core concepts of graphical programming.
 
 ---
 
 ## 🎮 **What is so_long?**
 
-The **so_long** project is designed to help you understand the fundamentals of graphical programming. It’s a top-down game where you must navigate through a map, collect coins, and escape through the exit. This project introduces working with graphics, map validation, event handling, sprites, and managing windows.
+The **so_long** project is designed to help you understand the fundamentals of graphical programming. It's a top-down game where you must navigate through a map, collect coins, and escape through the exit. This project introduces working with graphics, map validation, event handling, sprites, and managing windows.
 
 The game is built using the **MiniLibX** graphical library, and it comes with various tasks such as:
 
@@ -16,14 +16,16 @@ The game is built using the **MiniLibX** graphical library, and it comes with va
 - Managing windows and handling events.
 - Working with textures, sprites, and tiles.
 
-### 📌 **Project Requirements:**
+---
+
+## 📌 **Project Requirements:**
 
 The project must be written according to the **Norm**, the strict coding standard at 42. These are some of the key rules to follow:
 
 - Each function must be **maximum 25 lines**, not counting curly brackets.
 - Each line should not exceed **80 columns** in length (comments included).
 - A function can take a maximum of **4 named parameters**.
-- You can’t declare more than **5 variables per function**.
+- You can't declare more than **5 variables per function**.
 - **Forbidden constructs**:
   - `for`, `do...while`, `switch`, `case`, `goto`, ternary operators (`?`), and **Variable Length Arrays** (VLAs).
 
@@ -56,40 +58,29 @@ The goal of the game is to collect all the coins, which will unlock the exit. On
 
 ---
 
-## 🛠️ **How Does it Work?**
+## 🚀 **Setup & Running the Game**
 
-### **Setup Instructions:**
+### **Installation:**
 
-1. **Download the MiniLibX Library:**
+1. Clone this repository:
    ```bash
-   git clone https://github.com/42Paris/minilibx-linux.git
-   cd minilibx
+   git clone <repo-url>
+   cd so_long
+   ```
+
+2. Compile the project:
+   ```bash
    make
-Put the MiniLibX library in the same directory as your project.
-To Run the Game:
-Clone this repository:
+   ```
 
-bash
-نسخ
-تحرير
-git clone <your-repo-url>
-cd so_long
-Compile the project:
+3. Run the game with a map:
+   ```bash
+   ./so_long maps/maps_1.ber
+   ```
 
-bash
-نسخ
-تحرير
-make
-Run the game with a map:
+## 📂 **Project Structure**
 
-bash
-نسخ
-تحرير
-./so_long maps/maps_1.ber
-📂 Project Structure:
-makefile
-نسخ
-تحرير
+```
 so_long/
 │
 ├── Makefile             # Compilation instructions
@@ -97,14 +88,19 @@ so_long/
 ├── include/             # Header files
 ├── srcs/                # Source code
 ├── maps/                # Map files
-├── wrong_maps/          # Invalid map files
-📅 Project Milestones:
-Finished: 2024-09-01
-Grade: 125/100
-📜 License:
+└── wrong_maps/          # Invalid map files
+```
+
+## 📅 **Project Milestones**
+
+- **Completion Date:** 2024-11-13
+- **Grade:** 125/100
+
+## 📜 **License**
+
 This project is licensed under the terms of the 42 License. More details can be found on the 42 website.
 
-🔗 Additional Resources:
-MiniLibX GitHub Repository
-42 School
+## 🔗 **Additional Resources**
 
+- [MiniLibX GitHub Repository](https://github.com/42Paris/minilibx-linux)
+- [42 School](https://42.fr/en/homepage/)
