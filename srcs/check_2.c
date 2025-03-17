@@ -43,8 +43,8 @@ static void	flood_fill_collect(t_vars *vars, int x, int y)
 static int	flood_fill_exit(t_vars *vars, int x, int y)
 {
 	if (x < 0 || y < 0 || vars->copy_map_2[y][x] == '1'
-		|| vars->copy_map_2[y][x] == '\0'
-		|| vars->copy_map_2[y][x] == 'V' || vars->copy_map_2[y][x] == 'A')
+		|| vars->copy_map_2[y][x] == '\0' || vars->copy_map_2[y][x] == 'V'
+		|| vars->copy_map_2[y][x] == 'A')
 		return (0);
 	if (vars->copy_map_2[y][x] == 'E')
 		return (1);

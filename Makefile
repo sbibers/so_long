@@ -3,11 +3,6 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./include
 
 X11_FLAGS = -I./minilibx-linux -L./minilibx-linux -lmlx -lXext -lX11
-# what is the X11 : allows linux display graphical interface.
-# componentes of X11 ? 1) client (application) server : control the screen, the client are the apps (web browser) client send request to X server, X server takes care to showing on the screen.
-# 2) X server : handle the screen and input device (keyboard/mous) like X.Org.
-# 3) Window manager : control how windows look.
-# -lmlx : for library mlx, -lXext : for X Extensions library, -lX11 : for X11 that allows to connect with X widnow system.
 
 SRCS = srcs/so_long.c \
 		srcs/check_1.c \
@@ -23,30 +18,28 @@ SRCS = srcs/so_long.c \
 		srcs/ft_split.c \
 
 OBJ_DIR = objs
-# directory for objects file.
 
 OBJS = $(SRCS:srcs/%.c=$(OBJ_DIR)/%.o)
-# convert .c files to .o files to the path OBJ_DIR.
 
 NAME = so_long
 
 all:$(NAME)
 
 $(OBJ_DIR)/%.o:srcs/%.c
-	mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
-# mkdir -p $(OBJ_DIR) : make the OBJ_DIR if it not existing.
-# $(CC) $(CFLAGS) -c $< -o $@ : ($<) for .c files, ($@) for .o files. 
-# -c : translating the code into code (.o) without linking it.
-# -o : the result will be a file named laike .c file just .o file.
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 $(NAME):$(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(X11_FLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(X11_FLAGS) -o $(NAME)
+	@echo "\033[0;32mCompile success 😊"
 
 clean:
-	rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
+	@echo "\033[0;31mRemoved obj directory 😊"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "\033[0;31mRemoved ./so_long 😊"
 
 re:fclean all
 

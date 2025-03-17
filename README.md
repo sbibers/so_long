@@ -1,23 +1,110 @@
-so_long : A small 2D Game made using the MiniLibX Graphics Library - Textures, sprites and tiles included.
+# 🕹️ **so_long**: A 2D Game Project
 
-What is so_long? The fifth project in the 42 programming school's curriculum is the first graphical project in the program. Students can choose between three options: FdF, Fractol, and so_long. Each project focuses on a different area but shares the common goal of introducing graphical programming. The so_long project involves creating a top-down game coded entirely from scratch using the MiniLibX graphical library. The project requires implementing a series of tasks such as validating the game map passed as an argument, ensuring no memory leaks, designing game mechanics, managing windows, handling events, and working with sprites and maps.
+**so_long** is a small 2D game created using the **MiniLibX** Graphics Library. It’s the fifth project in the 42 programming school's curriculum. This game was developed from scratch and focuses on the core concepts of graphical programming.
 
-⚠️The project must be written in accordance with the Norm : The Norm is a programming standard that defines a set of rules to follow when writing code at 42. It applies to all C projects within the Common Core by default, and to any project where it's specified. These are some of them:
+---
 
-1-Each function must be maximum 25 lines, not counting the function's own curly brackets. 2-Each line must be at most 80 columns wide, comments included. 3-A function can take 4 named parameters maximum. 4-You can't declare more than 5 variables per function. 5-You're not allowed to use: for , do...while , switch , case , goto , ternary operators such as `?' and VLAs - Variable Length Arrays.
+## 🎮 **What is so_long?**
 
-Maps You can parse any kind of map, as long as it respects the below rules: The map must be a .ber file.
+The **so_long** project is designed to help you understand the fundamentals of graphical programming. It’s a top-down game where you must navigate through a map, collect coins, and escape through the exit. This project introduces working with graphics, map validation, event handling, sprites, and managing windows.
 
-CHAR OBJECT 1 Wall C Coin E Exit P Player 0 Floor A Enemy
+The game is built using the **MiniLibX** graphical library, and it comes with various tasks such as:
 
-Use WASD keys to move. KEY OBJECT W ⬆️Move up A ⬅️Move left S ⬇️Move down D ➡️Move right Esc Close the game
+- Validating game maps passed as arguments.
+- Ensuring no memory leaks.
+- Implementing game mechanics and designing the gameplay.
+- Managing windows and handling events.
+- Working with textures, sprites, and tiles.
 
-After getting all the coin bags, the exit opens and you can escape downstairs.
+### 📌 **Project Requirements:**
 
-How does it work?
+The project must be written according to the **Norm**, the strict coding standard at 42. These are some of the key rules to follow:
 
-First 1-download the library minilibx : git clone https://github.com/42Paris/minilibx-linux.git 2-cd minilibx 3-compile the minilibx (make) 4-put the minilibx in same directory of repo.
+- Each function must be **maximum 25 lines**, not counting curly brackets.
+- Each line should not exceed **80 columns** in length (comments included).
+- A function can take a maximum of **4 named parameters**.
+- You can’t declare more than **5 variables per function**.
+- **Forbidden constructs**:
+  - `for`, `do...while`, `switch`, `case`, `goto`, ternary operators (`?`), and **Variable Length Arrays** (VLAs).
 
-To play, clone this repo and cd into it: 1-git clone the repo 2-cd so_long 3-make 4-./so_long maps/maps_1.bermap_1.ber
+---
 
-42 is a global educational initiative offering a unique approach to learning technology: no teachers, no traditional classrooms, and a focus on peer-to-peer learning, where students learn collaboratively. This innovative methodology not only builds strong programming skills but also fosters essential life skills. Moreover, 42 is completely free and open to everyone, with no prerequisites required. The admissions process at 42 is unlike traditional colleges. It is entirely merit-based, with the final step being the Piscine—an intensive, immersive 4-week coding bootcamp. No prior coding experience is needed, making it accessible to anyone with the motivation to learn. You can check more about the admission process on the 42 amman website: https://cpf.jo/42amman
+## 🗺️ **Maps:**
+
+You can use any map file, as long as it adheres to the following rules:
+
+- The map must be in a **.ber** file format.
+- Valid characters in the map:
+  - **1** - Wall
+  - **C** - Coin
+  - **E** - Exit
+  - **P** - Player's starting position
+  - **0** - Floor
+  - **A** - Enemy
+
+---
+
+## 🎮 **Game Controls:**
+
+- **W** ➡️ Move Up
+- **A** ➡️ Move Left
+- **S** ➡️ Move Down
+- **D** ➡️ Move Right
+- **Esc** ➡️ Close the game
+
+The goal of the game is to collect all the coins, which will unlock the exit. Once all coins are collected, you can escape through the exit door to complete the level.
+
+---
+
+## 🛠️ **How Does it Work?**
+
+### **Setup Instructions:**
+
+1. **Download the MiniLibX Library:**
+   ```bash
+   git clone https://github.com/42Paris/minilibx-linux.git
+   cd minilibx
+   make
+Put the MiniLibX library in the same directory as your project.
+To Run the Game:
+Clone this repository:
+
+bash
+نسخ
+تحرير
+git clone <your-repo-url>
+cd so_long
+Compile the project:
+
+bash
+نسخ
+تحرير
+make
+Run the game with a map:
+
+bash
+نسخ
+تحرير
+./so_long maps/maps_1.ber
+📂 Project Structure:
+makefile
+نسخ
+تحرير
+so_long/
+│
+├── Makefile             # Compilation instructions
+├── README.md            # Project documentation
+├── include/             # Header files
+├── srcs/                # Source code
+├── maps/                # Map files
+├── wrong_maps/          # Invalid map files
+📅 Project Milestones:
+Finished: 2024-09-01
+Grade: 125/100
+📜 License:
+This project is licensed under the terms of the 42 License. More details can be found on the 42 website.
+
+🔗 Additional Resources:
+MiniLibX GitHub Repository
+42 School
+
