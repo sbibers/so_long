@@ -62,21 +62,43 @@ The goal of the game is to collect all the coins, which will unlock the exit. On
 
 ### **Installation:**
 
-1. Clone this repository:
+1. First, install the required dependencies for MiniLibX:
+   ```bash
+   sudo apt-get update
+   sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev
+   ```
+
+2. Clone and setup MiniLibX:
+   ```bash
+   git clone https://github.com/42Paris/minilibx-linux.git
+   cd minilibx-linux
+   make
+   sudo cp mlx.h /usr/local/include
+   sudo cp libmlx.a /usr/local/lib
+   cd ..
+   ```
+
+3. Clone this repository:
    ```bash
    git clone <repo-url>
    cd so_long
    ```
 
-2. Compile the project:
+4. Compile the project:
    ```bash
    make
    ```
 
-3. Run the game with a map:
+5. Run the game with a map:
    ```bash
    ./so_long maps/maps_1.ber
    ```
+
+### **Troubleshooting:**
+If you encounter any issues with MiniLibX:
+- Make sure all dependencies are properly installed
+- For MacOS users, you might need to install XQuartz
+- Check if the MiniLibX library is properly linked in the Makefile
 
 ## 📂 **Project Structure**
 
